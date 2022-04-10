@@ -1,5 +1,6 @@
 package com.akhdanpangestuaji.cleanarchitecturelearn.presentation
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.akhdanpangestuaji.cleanarchitecturelearn.di.Injection
 import com.akhdanpangestuaji.cleanarchitecturelearn.domain.MessageUseCase
@@ -13,5 +14,13 @@ class MainViewModelFactory(private  var messageUseCase: MessageUseCase) : ViewMo
             instance ?: synchronized(this){
                 instance ?: MainViewModelFactory(Injection.provideUseCase())
             }
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return when {
+            modelClass.isAssignableFrom(MainViewModel::class.java) -> MainViewModel(messageUseCase) as T
+            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
+        }
     }
 }

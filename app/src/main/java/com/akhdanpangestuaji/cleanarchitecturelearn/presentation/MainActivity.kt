@@ -1,12 +1,10 @@
-package com.akhdanpangestuaji.cleanarchitecturelearn
+package com.akhdanpangestuaji.cleanarchitecturelearn.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.akhdanpangestuaji.cleanarchitecturelearn.databinding.ActivityMainBinding
-import com.akhdanpangestuaji.cleanarchitecturelearn.presentation.MainViewModel
-import com.akhdanpangestuaji.cleanarchitecturelearn.presentation.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 

@@ -2,7 +2,11 @@ package com.akhdanpangestuaji.cleanarchitecturelearn
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.akhdanpangestuaji.cleanarchitecturelearn.databinding.ActivityMainBinding
+import com.akhdanpangestuaji.cleanarchitecturelearn.presentation.MainViewModel
+import com.akhdanpangestuaji.cleanarchitecturelearn.presentation.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,5 +16,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val factory = MainViewModelFactory.getInstance()
+        val viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
+
+        viewModel.setName("Dicoding")
+        viewModel.message.observe(this, Observer {
+            binding.tvWelcome.text = it.welcomeMessage
+        })
     }
 }

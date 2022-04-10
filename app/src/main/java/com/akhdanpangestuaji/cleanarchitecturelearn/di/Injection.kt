@@ -1,5 +1,7 @@
 package com.akhdanpangestuaji.cleanarchitecturelearn.di
 
+import com.akhdanpangestuaji.cleanarchitecturelearn.data.IMessageDataSource
+import com.akhdanpangestuaji.cleanarchitecturelearn.data.MessageDataSource
 import com.akhdanpangestuaji.cleanarchitecturelearn.data.MessageRepository
 import com.akhdanpangestuaji.cleanarchitecturelearn.domain.IMessageRepository
 import com.akhdanpangestuaji.cleanarchitecturelearn.domain.MessageInteractor
@@ -16,5 +18,8 @@ object Injection {
         return MessageRepository(messageDataSource)
     }
 
+    private fun provideDataSource(): IMessageDataSource {
+        return MessageDataSource()
+    }
 
 }

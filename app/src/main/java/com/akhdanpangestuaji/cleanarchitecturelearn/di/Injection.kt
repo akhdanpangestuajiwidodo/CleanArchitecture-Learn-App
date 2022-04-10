@@ -1,5 +1,10 @@
 package com.akhdanpangestuaji.cleanarchitecturelearn.di
 
-object Injection {
+import com.akhdanpangestuaji.cleanarchitecturelearn.domain.MessageUseCase
 
+object Injection {
+    fun provideUseCase(): MessageUseCase {
+        val messageRepository = provideRepository()
+        return  messageRepository(messageRepository)
+    }
 }
